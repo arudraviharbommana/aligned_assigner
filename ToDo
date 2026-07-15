@@ -1,0 +1,59 @@
+also add dark and light themes for switching, and keep the assignements display in shorter than the current also improve the ui filters, styles and add any features if needed that would improve the existing
+new focus on data base so that it should store the data od logged in students according to branch and section
+keep one secret account that is only for me who developed and manage as admin of this site who can watch the data of students, their submissions, activities, and the data must be ready in excel sheet and enable them for download
+
+add admin feature
+include cause of rejection
+
+allow faculty to reapprove the assignment incase of false rejection
+
+upgrade the data storage from local storage to global storage 
+
+allow user to resubmit the assignment incase of false submission
+
+upgrade preview feature all kind of files
+
+allow faculty to mention the assignment submission file format and batch/solo submission while assignment creation 
+
+add select role while login
+
+add forget password feature
+
+add batch submission feature (so that Student can able to submit the team assignment)
+and team formation feature. and allow only team leader to submit the assignment.
+
+add mail notification service to notify the user whether the assignment is accepted or rejected
+
+allow user to submit the assignment even after the deadline with warning msg 
+and allow user to mention the reason for late submission along with assignment
+
+
+add chat feature between faculty and student
+add specific chat window for separate submission types
+and comment section for user specific or faculty specific 
+
+collect the late submission assignment at one place
+allow faculty to multi rejection and approval with preview tab
+
+
+include csv/excel export feature which include submission time, submission status, approval status
+
+
+
+add no of submissions and pending count to faculty dashboard 
+
+
+add display feature of syllabus paper as batch and subject wise
+
+and use the lab syllabus while faculty creating the assignment as list selection feature
+
+ 
+
+
+
+
+
+
+
+
+
