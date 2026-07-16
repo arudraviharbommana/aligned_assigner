@@ -1,292 +1,392 @@
 # Software Requirements Specification (SRS)
 
-# Smart Assignment Management System
+# Assignment Management System
 
-## 1. Introduction
-
-### 1.1 Project Title
-
-Smart Assignment Management System
-
-### 1.2 Purpose
-
-The purpose of this system is to digitize and automate assignment creation, submission, approval, rejection, communication, and reporting activities between students and faculty while providing administrators with complete control and analytics.
-
-### 1.3 Scope
-
-The platform will allow educational institutions to manage assignments efficiently while supporting individual and team submissions, late submissions, approvals, rejection workflows, notifications, and real-time communication.
+Version: 1.0
+Prepared By: Development Team
+Date: July 2026
 
 ---
 
-# 2. Objectives
+# 1. Introduction
 
-* Simplify assignment management.
-* Reduce manual tracking efforts.
-* Enable transparent approval workflows.
-* Support team assignments.
-* Provide faculty and administrators with analytics.
-* Maintain centralized data storage.
-* Improve communication between students and faculty.
+## 1.1 Purpose
+
+The purpose of this project is to develop a centralized web-based Assignment Management System that simplifies assignment creation, submission, evaluation, communication, and reporting for students and faculty while providing complete administrative control and analytics.
+
+The system aims to replace manual assignment tracking and fragmented communication with a secure and scalable platform.
 
 ---
 
-# 3. Technology Stack
+## 1.2 Scope
+
+The system will provide:
+
+* Assignment creation and management for faculty.
+* Assignment submission and tracking for students.
+* Team assignment support.
+* Approval and rejection workflow.
+* Late submission handling.
+* Real-time communication between faculty and students.
+* Administrative analytics and monitoring.
+* File preview and export capabilities.
+* Role-based access control.
+
+The platform is designed to support multiple branches, sections, subjects, and semesters.
+
+---
+
+# 2. Technology Stack
 
 ## Frontend
 
 * React.js
+* TypeScript
 * Vite
 * Tailwind CSS
-* Context API / Redux Toolkit
-* React Router DOM
-* Axios
-* Socket.IO Client
+* shadcn/ui
+* React Router
+* TanStack Query
+* Zustand
 
 ## Backend
 
 * Node.js
 * Express.js
-* Socket.IO
-* JWT Authentication
-* Nodemailer
 
 ## Database
 
-* MongoDB Atlas
-* Mongoose ODM
+* PostgreSQL
+
+## ORM
+
+* Prisma ORM
+
+## Authentication
+
+* JWT Authentication
+* bcrypt Password Hashing
 
 ## File Storage
 
 * Cloudinary
 
+## Real-Time Features
+
+* Socket.IO
+
+## Email Service
+
+* Resend Email API
+
 ## Export Features
 
 * ExcelJS
-* json2csv
+* CSV Export
+
+## Deployment
+
+* Frontend: Vercel
+* Backend: Render
+* Database: Neon PostgreSQL
 
 ---
 
-# 4. User Roles
+# 3. User Roles
 
 ## Student
 
-* Register and login.
-* Submit assignments.
-* View assignment status.
-* Resubmit assignments.
-* Create or join teams.
-* Chat with faculty.
-* View comments and feedback.
+* View assignments
+* Submit assignments
+* Create teams
+* Join teams
+* Resubmit assignments
+* View feedback
+* Chat with faculty
+* Receive notifications
 
 ## Faculty
 
-* Create assignments.
-* Approve or reject submissions.
-* Provide rejection reasons.
-* Reapprove rejected submissions.
-* Manage team assignments.
-* Export reports.
-* Communicate with students.
+* Create assignments
+* Approve submissions
+* Reject submissions with reasons
+* Reapprove rejected submissions
+* Bulk approve or reject submissions
+* Export reports
+* Communicate with students
 
 ## Admin
 
-* View all users.
-* View all submissions.
-* Download reports.
-* Monitor activities.
-* Manage branches and sections.
-* Manage subjects and syllabus.
-
-## Super Admin
-
-* Hidden account reserved for project owner.
-* Access complete analytics.
-* Manage admins.
-* Access audit logs.
+* Manage users
+* Manage branches and sections
+* Monitor activities
+* View analytics
+* Export reports
+* Manage syllabus data
 
 ---
 
-# 5. Functional Requirements
+# 4. Functional Requirements
 
-## Authentication Module
+## 4.1 Authentication Module
 
-* Role selection during login.
-* JWT authentication.
-* Forgot password functionality.
-* Email verification.
-* Password reset via email.
+Features:
 
-## Student Module
+* Login using email and password
+* Select role during login
+* Forgot password functionality
+* JWT-based authentication
+* Role-based authorization
 
-* View assignments.
+---
+
+## 4.2 Student Module
+
+Students can:
+
+* View assignments by subject.
 * Submit assignments.
-* Upload multiple file types.
-* Add late submission reasons.
-* View approval status.
-* Team creation and management.
-* Real-time chat with faculty.
+* Resubmit assignments.
+* Submit assignments after deadline with warning.
+* Provide reason for late submission.
+* View submission status.
+* View faculty feedback.
+* Participate in team assignments.
 * Receive email notifications.
+* Chat with faculty.
 
-## Faculty Module
+---
+
+## 4.3 Faculty Module
+
+Faculty can:
 
 * Create assignments.
-* Specify submission file formats.
-* Configure individual or team assignments.
-* Configure deadlines.
-* Approve or reject submissions.
-* Mention rejection reasons.
+* Specify:
+
+  * File format restrictions
+  * Team or individual submissions
+  * Deadline
+  * Subject
+  * Branch and section
+* Approve submissions.
+* Reject submissions with reasons.
 * Reapprove rejected submissions.
-* Bulk approve or reject submissions.
-* View pending submission count.
+* View late submissions separately.
+* Bulk approve and reject submissions.
+* Export reports.
+* View pending counts.
 
-## Admin Module
+---
 
-* View all students branch-wise and section-wise.
-* Download reports in Excel or CSV.
-* Monitor activities and submissions.
-* Access analytics dashboard.
-* Manage faculty and students.
+## 4.4 Team Management Module
 
-## Team Management Module
+Features:
 
 * Team creation.
 * Team invitation.
-* Team leader assignment.
-* Team leader-only submission permissions.
-
-## Chat Module
-
-* Student-faculty chat.
-* Assignment-specific discussions.
-* Submission-specific discussion threads.
-* Comments section.
-
-## Notification Module
-
-* Approval notifications.
-* Rejection notifications.
-* Assignment creation notifications.
-* Password reset notifications.
-
-## Export Module
-
-* Export submissions.
-* Export student activity reports.
-* Export approval history.
-* Export faculty reports.
+* Team member management.
+* Team leader selection.
+* Only team leader can submit.
+* Team submission tracking.
 
 ---
 
-# 6. Non-Functional Requirements
+## 4.5 Assignment Module
+
+Assignment details:
+
+* Title
+* Description
+* Subject
+* Branch
+* Section
+* Deadline
+* Allowed file types
+* Submission type
+* Maximum team size
+* Attachments
+
+---
+
+## 4.6 Submission Module
+
+Submission data:
+
+* Submission timestamp
+* Status
+* Approval status
+* Feedback
+* Rejection reason
+* Late submission reason
+* File attachments
+
+---
+
+## 4.7 Chat Module
+
+Features:
+
+* Student and faculty messaging.
+* Assignment-specific chat rooms.
+* Submission-specific discussions.
+* Comment sections.
+
+---
+
+## 4.8 Notification Module
+
+Notifications for:
+
+* Assignment creation
+* Submission confirmation
+* Approval
+* Rejection
+* Reapproval
+* Team invitations
+
+Notifications will be delivered through:
+
+* In-app notifications
+* Email notifications
+
+---
+
+## 4.9 File Preview Module
+
+Supported formats:
+
+* PDF
+* DOC
+* DOCX
+* PPT
+* PPTX
+* XLS
+* XLSX
+* PNG
+* JPG
+* ZIP
+* MP4
+
+---
+
+## 4.10 Syllabus Module
+
+Features:
+
+* Subject-wise syllabus display.
+* Branch-wise syllabus display.
+* Semester-wise syllabus display.
+* Lab syllabus integration.
+* Faculty assignment creation using syllabus selection.
+
+---
+
+## 4.11 Analytics Module
+
+Faculty Dashboard:
+
+* Total assignments
+* Pending submissions
+* Approved submissions
+* Rejected submissions
+* Late submissions
+
+Admin Dashboard:
+
+* Total users
+* Branch-wise statistics
+* Section-wise statistics
+* Student activity
+* Submission trends
+
+---
+
+## 4.12 Export Module
+
+Supported exports:
+
+* CSV
+* Excel
+
+Exported data includes:
+
+* Student details
+* Submission time
+* Approval status
+* Rejection reasons
+* Faculty actions
+* Activity logs
+
+---
+
+# 5. Non-Functional Requirements
 
 ## Performance
 
-* Support 1000+ concurrent users.
+* Response time less than 2 seconds for normal operations.
 
 ## Security
 
-* JWT authentication.
 * Password encryption using bcrypt.
-* Role-based authorization.
-
-## Availability
-
-* 99% uptime target.
+* JWT token authentication.
+* Role-based access control.
 
 ## Scalability
 
-* Support future expansion for multiple colleges.
+* Support for thousands of students.
+
+## Reliability
+
+* 99% uptime target.
+
+## Maintainability
+
+* Modular architecture.
+* Reusable components.
 
 ## Usability
 
-* Responsive UI.
-* Dark and light themes.
-* Mobile-friendly design.
+* Responsive design.
+* Dark and light theme support.
+* Accessible user interface.
 
 ---
 
-# 7. Database Collections
+# 6. Database Entities
 
-## Users
-
-* name
-* email
-* password
-* role
-* branch
-* section
-
-## Assignments
-
-* title
-* description
-* subject
-* deadline
-* submissionType
-* allowedFormats
-
-## Submissions
-
-* studentId
-* assignmentId
-* files
-* status
-* submittedAt
-* lateReason
-
-## Teams
-
-* teamName
-* leaderId
-* members
-
-## Chats
-
-* senderId
-* receiverId
-* message
-* timestamp
-
-## Notifications
-
-* userId
-* title
-* message
-* readStatus
-
-## Activity Logs
-
-* userId
-* action
-* timestamp
+* Users
+* Students
+* Faculty
+* Admins
+* Branches
+* Sections
+* Subjects
+* Assignments
+* Submissions
+* Teams
+* Team Members
+* Notifications
+* Chats
+* Comments
+* Activity Logs
+* Syllabus
+* Rejection History
 
 ---
 
-# 8. UI Requirements
+# 7. Future Enhancements
 
-* Dark and Light Theme Toggle.
-* Advanced Filters.
-* Responsive Design.
-* Dashboard Cards.
-* Search and Sorting.
-* Assignment Status Indicators.
-* Modern Tables.
-* Real-time Notifications.
-
----
-
-# 9. Future Enhancements
-
-* Mobile Application.
-* AI-based plagiarism detection.
-* AI assignment evaluation.
-* Attendance integration.
-* LMS integration.
+* Mobile application.
+* AI plagiarism detection.
+* AI grading assistance.
+* OCR support for handwritten assignments.
 * Calendar integration.
+* Attendance integration.
 * AI chatbot support.
 
 ---
 
-# 10. Expected Outcome
+# 8. Conclusion
 
-The system will provide a centralized, scalable, and efficient platform for assignment management with complete transparency for students, faculty, and administrators while reducing manual work and improving communication.
+The Assignment Management System aims to provide a complete digital ecosystem for academic assignment workflows, improving transparency, communication, and efficiency for students, faculty, and administrators while ensuring scalability for future institutional needs.
